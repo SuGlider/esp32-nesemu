@@ -701,6 +701,8 @@ static void ppu_renderbg(uint8 *vidbuf)
    uint8 tile_index, x_tile, y_tile;
    uint8 col_high, attrib, attrib_shift;
 
+    ASSERT(vidbuf);
+
    /* draw a line of transparent background color if bg is disabled */
    if (false == ppu.bg_on)
    {
