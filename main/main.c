@@ -1,14 +1,15 @@
-#include "freertos/FreeRTOS.h"
-#include "esp_wifi.h"
+/*
+ * SPDX-FileCopyrightText: 2022 Espressif Systems (Shanghai) CO LTD
+ *
+ * SPDX-License-Identifier: CC0-1.0
+ */
+ 
 #include "esp_system.h"
-#include "esp_event.h"
 #include "nvs_flash.h"
-#include "driver/gpio.h"
 #include "nofrendo.h"
 #include "esp_partition.h"
 #include "esp_spi_flash.h"
-
-
+#include "bsp/esp-bsp.h"
 
 char *osd_getromdata() {
 	char* romdata;
@@ -32,6 +33,13 @@ char *osd_getromdata() {
 
 int app_main(void)
 {
+    /* Initialize display and LVGL */
+    lv_disp_t * display = bsp_display_start();
+
+    /* Set display brightness to 100% */
+    bsp_display_backlight_on();
+    
+    
 	printf("NoFrendo start!\n");
 	nofrendo_main(0, NULL);
 	printf("NoFrendo died? WtF?\n");

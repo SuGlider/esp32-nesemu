@@ -1,4 +1,7 @@
-build/
+managed_components/**
+build/*
+dependencies.lock
+sdkconfig
 sdkconfig.old
-*.nes
-
+.vscode/*
+.devcontainer/*
