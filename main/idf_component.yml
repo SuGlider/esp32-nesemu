@@ -2,4 +2,3 @@ description: NES Emulator
 
 dependencies:
   idf: ">=5.0"
-  esp-box: "2.4.0"
