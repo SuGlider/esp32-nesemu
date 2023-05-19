@@ -38,7 +38,7 @@ static const char *TAG = "OSD";
 
 #define APP_DEFAULT_WIDTH  256
 #define APP_DEFAULT_HEIGHT 240
-#define APP_DEFAULT_ZOOM   512
+#define APP_DEFAULT_ZOOM   256
 
 typedef struct {
    int16_t x;              /* Mouse X coordinate */
@@ -55,6 +55,27 @@ typedef struct {
     hid_host_driver_event_t event;
     void *arg;
 } app_usb_hid_event_t;
+
+typedef struct
+{
+    uint8_t reserved1;
+    uint8_t reserved2;
+    
+    bool    btn_select:1;
+    bool    btn_res1:1;
+    bool    btn_res2:1;
+    bool    btn_start:1;
+    bool    btn_up:1;
+    bool    btn_right:1;
+    bool    btn_down:1;
+    bool    btn_left:1;
+    
+    bool    btn_res3:4;
+    bool    btn_triangle:1;
+    bool    btn_circle:1;
+    bool    btn_cross:1;
+    bool    btn_square:1;
+} __attribute__((packed)) gamepad_t;
 
 /*******************************************************************************
 * Function definitions
@@ -104,6 +125,8 @@ static lv_img_dsc_t vid_tmp_img;
 static QueueHandle_t hid_queue = NULL;
 static app_kb_t app_kb;
 static app_mouse_t app_mouse;
+static gamepad_t app_gamepad;
+static gamepad_t app_gamepad_tmp;
 /*******************************************************************************
 * Public API functions
 *******************************************************************************/
@@ -126,24 +149,24 @@ void osd_setsound(void (*playfunc)(void *buffer, int size))
 int osd_init(void)
 {
    uint32_t buf_size = APP_DEFAULT_WIDTH * APP_DEFAULT_HEIGHT * sizeof(uint16_t);
-   vid_buffer = heap_caps_malloc(4*buf_size, MALLOC_CAP_DEFAULT);
+   vid_buffer = heap_caps_malloc(buf_size, MALLOC_CAP_DEFAULT);
    assert(vid_buffer);
    memset(vid_buffer, 0x00, buf_size);
-   vid_buffer_tmp = heap_caps_malloc(buf_size, MALLOC_CAP_DEFAULT);
-   assert(vid_buffer_tmp);
-   memset(vid_buffer_tmp, 0x00, buf_size);
+   //vid_buffer_tmp = heap_caps_malloc(buf_size, MALLOC_CAP_DEFAULT);
+   //assert(vid_buffer_tmp);
+   //memset(vid_buffer_tmp, 0x00, buf_size);
 
-   vid_tmp_img.data = (void *)vid_buffer_tmp;
+   /*vid_tmp_img.data = (void *)vid_buffer_tmp;
    vid_tmp_img.header.cf = LV_IMG_CF_TRUE_COLOR;
    vid_tmp_img.header.w = APP_DEFAULT_WIDTH;
-   vid_tmp_img.header.h = APP_DEFAULT_HEIGHT;
+   vid_tmp_img.header.h = APP_DEFAULT_HEIGHT;*/
 
-   //app_hid_init();
+   app_hid_init();
 
    bsp_display_lock(0);
    lv_obj_set_style_bg_color(lv_scr_act(), lv_color_black(), 0);
    lvgl_video_canvas = lv_canvas_create(lv_scr_act());
-   lv_canvas_set_buffer(lvgl_video_canvas, vid_buffer, 2*APP_DEFAULT_WIDTH, 2*APP_DEFAULT_HEIGHT, LV_IMG_CF_TRUE_COLOR);
+   lv_canvas_set_buffer(lvgl_video_canvas, vid_buffer, APP_DEFAULT_WIDTH, APP_DEFAULT_HEIGHT, LV_IMG_CF_TRUE_COLOR);
    lv_obj_center(lvgl_video_canvas);
    bsp_display_unlock();
 
@@ -184,44 +207,94 @@ char *osd_newextension(char *string, char *ext)
 void osd_getinput(void)
 {
 	event_t evh = NULL;
-   
-   int pressed = (app_kb.pressed ? INP_STATE_MAKE : INP_STATE_BREAK);
-   if (app_kb.last_key == 's') {
-      ESP_LOGW(TAG, "select");
+   int pressed = 0;
+
+   if(app_gamepad_tmp.btn_select != app_gamepad.btn_select)
+   {
+      pressed = (app_gamepad.btn_select ? INP_STATE_MAKE : INP_STATE_BREAK);
       evh = event_get(event_joypad1_select);
-   } else if(app_kb.last_key == LV_KEY_ENTER) {
-      ESP_LOGW(TAG, "start");
+      app_gamepad_tmp.btn_select = app_gamepad.btn_select;
+
+      if(evh) {
+         evh(pressed);
+      }
+   }
+   
+   if(app_gamepad_tmp.btn_start != app_gamepad.btn_start)
+   {
+      pressed = (app_gamepad.btn_start ? INP_STATE_MAKE : INP_STATE_BREAK);
       evh = event_get(event_joypad1_start);
-   } else if(app_kb.last_key == LV_KEY_UP) {
-      ESP_LOGW(TAG, "up");
+      app_gamepad_tmp.btn_start = app_gamepad.btn_start;
+
+      if(evh) {
+         evh(pressed);
+      }
+   }
+   
+   if(app_gamepad_tmp.btn_up != app_gamepad.btn_up)
+   {
+      pressed = (app_gamepad.btn_up ? INP_STATE_MAKE : INP_STATE_BREAK);
       evh = event_get(event_joypad1_up);
-   } else if(app_kb.last_key == LV_KEY_DOWN) {
-      ESP_LOGW(TAG, "down");
+      app_gamepad_tmp.btn_up = app_gamepad.btn_up;
+
+      if(evh) {
+         evh(pressed);
+      }
+   }
+   
+   if(app_gamepad_tmp.btn_down != app_gamepad.btn_down)
+   {
+      pressed = (app_gamepad.btn_down ? INP_STATE_MAKE : INP_STATE_BREAK);
       evh = event_get(event_joypad1_down);
-   } else if(app_kb.last_key == LV_KEY_RIGHT) {
-      ESP_LOGW(TAG, "right");
+      app_gamepad_tmp.btn_down = app_gamepad.btn_down;
+
+      if(evh) {
+         evh(pressed);
+      }
+   }
+   
+   if(app_gamepad_tmp.btn_right != app_gamepad.btn_right)
+   {
+      pressed = (app_gamepad.btn_right ? INP_STATE_MAKE : INP_STATE_BREAK);
       evh = event_get(event_joypad1_right);
-   } else if(app_kb.last_key == LV_KEY_LEFT) {
-      ESP_LOGW(TAG, "left");
+      app_gamepad_tmp.btn_right = app_gamepad.btn_right;
+
+      if(evh) {
+         evh(pressed);
+      }
+   }
+   
+   if(app_gamepad_tmp.btn_left != app_gamepad.btn_left)
+   {
+      pressed = (app_gamepad.btn_left ? INP_STATE_MAKE : INP_STATE_BREAK);
       evh = event_get(event_joypad1_left);
-   }else if(app_kb.last_key == ' ') {
-      ESP_LOGW(TAG, "A");
+      app_gamepad_tmp.btn_left = app_gamepad.btn_left;
+
+      if(evh) {
+         evh(pressed);
+      }
+   }
+   
+   if(app_gamepad_tmp.btn_cross != app_gamepad.btn_cross)
+   {
+      pressed = (app_gamepad.btn_cross ? INP_STATE_MAKE : INP_STATE_BREAK);
       evh = event_get(event_joypad1_a);
-   }else if(app_kb.last_key == 'b') {
-      ESP_LOGW(TAG, "B");
+      app_gamepad_tmp.btn_cross = app_gamepad.btn_cross;
+
+      if(evh) {
+         evh(pressed);
+      }
+   }
+   
+   if(app_gamepad_tmp.btn_circle != app_gamepad.btn_circle)
+   {
+      pressed = (app_gamepad.btn_circle ? INP_STATE_MAKE : INP_STATE_BREAK);
       evh = event_get(event_joypad1_b);
-   }
+      app_gamepad_tmp.btn_circle = app_gamepad.btn_circle;
 
-   if(evh) {
-      evh(pressed);
-   }
-
-   if (app_kb.pressed) {
-      ESP_LOGW(TAG, "1");
-      //app_kb.pressed = false;
-   } else {
-      //ESP_LOGW(TAG, "0");
-      app_kb.last_key = 0;
+      if(evh) {
+         evh(pressed);
+      }
    }
 }
 
@@ -306,14 +379,14 @@ static void app_osd_video_custom_blit(bitmap_t *primary, int num_dirties, rect_t
    {
       for(int y=0; y<APP_DEFAULT_HEIGHT; y++)
       {
-         vid_buffer_tmp[(x*APP_DEFAULT_HEIGHT*2) + (y*2)] = HIBYTE(colorPalette[data[0]]);
-         vid_buffer_tmp[(x*APP_DEFAULT_HEIGHT*2) + (y*2)+1] = LOBYTE(colorPalette[data[0]]);
+         vid_buffer[(x*APP_DEFAULT_HEIGHT*2) + (y*2)] = HIBYTE(colorPalette[data[0]]);
+         vid_buffer[(x*APP_DEFAULT_HEIGHT*2) + (y*2)+1] = LOBYTE(colorPalette[data[0]]);
          data++;
       }
    }
 
    bsp_display_lock(0);
-   lv_canvas_transform(lvgl_video_canvas, &vid_tmp_img, 0, APP_DEFAULT_ZOOM, 0, 0, 0, 0, true);
+   //lv_canvas_transform(lvgl_video_canvas, &vid_tmp_img, 0, APP_DEFAULT_ZOOM, 0, 0, 0, 0, true);
    lv_obj_invalidate(lvgl_video_canvas);
    bsp_display_unlock();
 }
@@ -407,14 +480,11 @@ static void app_usb_hid_host_interface_callback(hid_host_device_handle_t hid_dev
       if (dev->proto == HID_PROTOCOL_KEYBOARD) {
          hid_keyboard_input_report_boot_t *keyboard = (hid_keyboard_input_report_boot_t *)data;
          if (data_length < sizeof(hid_keyboard_input_report_boot_t)) {
-               ESP_LOGW(TAG, "kb 1");
                return;
          }
          for (int i = 0; i < HID_KEYBOARD_KEY_MAX; i++) {
-               ESP_LOGW(TAG, "kb 2");
                if (keyboard->key[i] > HID_KEY_ERROR_UNDEFINED) {
                   char key = 0;
-                  ESP_LOGW(TAG, "kb 3");
 
                   /* LVGL special keys */
                   if (keyboard->key[i] == HID_KEY_TAB) {
@@ -458,7 +528,6 @@ static void app_usb_hid_host_interface_callback(hid_host_device_handle_t hid_dev
                }
                
          }
-         ESP_LOGW(TAG, "kb 5");
 
       } else if (dev->proto == HID_PROTOCOL_MOUSE) {
          hid_mouse_input_report_boot_t *mouse = (hid_mouse_input_report_boot_t *)data;
@@ -468,6 +537,14 @@ static void app_usb_hid_host_interface_callback(hid_host_device_handle_t hid_dev
          app_mouse.left_button = mouse->buttons.button1;
          app_mouse.x += mouse->x_displacement;
          app_mouse.y += mouse->y_displacement;
+      } else {
+         gamepad_t *gamepad = (gamepad_t*)data;
+         if (data_length < 1) {
+               break;
+         }
+         memcpy(&app_gamepad, gamepad, sizeof(gamepad_t));
+         osd_getinput();
+         //ESP_LOGW(TAG, "Gamepad... len: %d; 0x%02x 0x%02x 0x%02x 0x%02x ", data_length, data[0], data[1], data[2], data[3]);
       }
       break;
    case HID_HOST_INTERFACE_EVENT_TRANSFER_ERROR:
@@ -495,7 +572,7 @@ static void app_usb_hid_task(void *arg)
             switch (msg.event) {
             case HID_HOST_DRIVER_EVENT_CONNECTED:
                /* Handle mouse or keyboard */
-               if (dev->proto == HID_PROTOCOL_KEYBOARD || dev->proto == HID_PROTOCOL_MOUSE) {
+               if (dev->proto == HID_PROTOCOL_NONE || dev->proto == HID_PROTOCOL_KEYBOARD || dev->proto == HID_PROTOCOL_MOUSE) {
                   const hid_host_device_config_t dev_config = {
                      .callback = app_usb_hid_host_interface_callback,
                   };
@@ -504,9 +581,12 @@ static void app_usb_hid_task(void *arg)
                   ESP_ERROR_CHECK( hid_class_request_set_idle(hid_device_handle, 0, 0) );
                   ESP_ERROR_CHECK( hid_class_request_set_protocol(hid_device_handle, HID_REPORT_PROTOCOL_BOOT) );
                   ESP_ERROR_CHECK( hid_host_device_start(hid_device_handle) );
+               } else {
+                  ESP_LOGE(TAG, "Other HID device connected! Proto: %d", dev->proto);
                }
                break;
             default:
+               ESP_LOGE(TAG, "Not handled HID event!");
                break;
             }
         }

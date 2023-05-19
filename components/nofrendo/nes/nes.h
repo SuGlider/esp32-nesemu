@@ -43,9 +43,9 @@
 
 /* NTSC = 60Hz, PAL = 50Hz */
 #ifdef PAL
-#define  NES_REFRESH_RATE     50
+#define  NES_REFRESH_RATE     30
 #else /* !PAL */
-#define  NES_REFRESH_RATE     60
+#define  NES_REFRESH_RATE     30
 #endif /* !PAL */
 
 #define  MAX_MEM_HANDLERS     32
