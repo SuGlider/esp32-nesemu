@@ -24,20 +24,20 @@
 
 #include <math.h>
 #include <string.h>
-#include <noftypes.h>
-#include <bitmap.h>
-#include <nofconfig.h>
-#include <event.h>
-#include <gui.h>
-#include <log.h>
-#include <nes.h>
-#include <nes_pal.h>
-#include <nesinput.h>
-#include <osd.h>
 #include <stdint.h>
+#include "noftypes.h"
+#include "bitmap.h"
+#include "nofconfig.h"
+#include "event.h"
+#include "gui.h"
+#include "log.h"
+#include "nes.h"
+#include "nes_pal.h"
+#include "nesinput.h"
+#include "osd.h"
 #include "driver/i2s.h"
 #include "sdkconfig.h"
-#include <spi_lcd.h>
+#include "spi_lcd.h"
 
 #include <psxcontroller.h>
 

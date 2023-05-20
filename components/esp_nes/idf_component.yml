@@ -1,0 +1,4 @@
+version: "1.0.0"
+description: esp_nes
+dependencies:
+  idf: ">=5.0"
