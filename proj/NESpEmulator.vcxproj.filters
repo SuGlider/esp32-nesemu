@@ -1,0 +1,404 @@
+﻿<?xml version="1.0" encoding="utf-8"?>
+<Project ToolsVersion="4.0" xmlns="http://schemas.microsoft.com/developer/msbuild/2003">
+  <ItemGroup>
+    <Filter Include="源文件">
+      <UniqueIdentifier>{4FC737F1-C7A5-4376-A066-2A32D752A2FF}</UniqueIdentifier>
+      <Extensions>cpp;c;cc;cxx;c++;cppm;ixx;def;odl;idl;hpj;bat;asm;asmx</Extensions>
+    </Filter>
+    <Filter Include="头文件">
+      <UniqueIdentifier>{93995380-89BD-4b04-88EB-625FBE52EBFB}</UniqueIdentifier>
+      <Extensions>h;hh;hpp;hxx;h++;hm;inl;inc;ipp;xsd</Extensions>
+    </Filter>
+    <Filter Include="src">
+      <UniqueIdentifier>{1d8c1b08-13e3-459c-8f84-5fcf37704b74}</UniqueIdentifier>
+    </Filter>
+    <Filter Include="FreeRTOS">
+      <UniqueIdentifier>{b59e2112-bddf-492f-96cf-37b482557b85}</UniqueIdentifier>
+    </Filter>
+    <Filter Include="FreeRTOS\include">
+      <UniqueIdentifier>{b324ac19-2c0d-47be-9c58-3ea4f67221bf}</UniqueIdentifier>
+    </Filter>
+    <Filter Include="src\mappers">
+      <UniqueIdentifier>{d7d21c79-b1c3-4661-b77e-489cdf1f909d}</UniqueIdentifier>
+    </Filter>
+    <Filter Include="Common">
+      <UniqueIdentifier>{dac88234-35e8-42f0-8883-574fd8118de1}</UniqueIdentifier>
+    </Filter>
+  </ItemGroup>
+  <ItemGroup>
+    <ClInclude Include="framework.h">
+      <Filter>头文件</Filter>
+    </ClInclude>
+    <ClInclude Include="targetver.h">
+      <Filter>头文件</Filter>
+    </ClInclude>
+    <ClInclude Include="Resource.h">
+      <Filter>头文件</Filter>
+    </ClInclude>
+    <ClInclude Include="NESpEmulator.h">
+      <Filter>头文件</Filter>
+    </ClInclude>
+    <ClInclude Include="..\src\bitmap.h">
+      <Filter>src</Filter>
+    </ClInclude>
+    <ClInclude Include="..\src\components\nofrendo\cpu\dis6502.h">
+      <Filter>src</Filter>
+    </ClInclude>
+    <ClInclude Include="..\src\components\nofrendo\cpu\nes6502.h">
+      <Filter>src</Filter>
+    </ClInclude>
+    <ClInclude Include="..\src\components\nofrendo\libsnss\libsnss.h">
+      <Filter>src</Filter>
+    </ClInclude>
+    <ClInclude Include="..\src\components\nofrendo\nes\mmclist.h">
+      <Filter>src</Filter>
+    </ClInclude>
+    <ClInclude Include="..\src\components\nofrendo\nes\nes.h">
+      <Filter>src</Filter>
+    </ClInclude>
+    <ClInclude Include="..\src\components\nofrendo\nes\nesinput.h">
+      <Filter>src</Filter>
+    </ClInclude>
+    <ClInclude Include="..\src\components\nofrendo\nes\nesstate.h">
+      <Filter>src</Filter>
+    </ClInclude>
+    <ClInclude Include="..\src\components\nofrendo\nes\nes_mmc.h">
+      <Filter>src</Filter>
+    </ClInclude>
+    <ClInclude Include="..\src\components\nofrendo\nes\nes_pal.h">
+      <Filter>src</Filter>
+    </ClInclude>
+    <ClInclude Include="..\src\components\nofrendo\nes\nes_ppu.h">
+      <Filter>src</Filter>
+    </ClInclude>
+    <ClInclude Include="..\src\components\nofrendo\nes\nes_rom.h">
+      <Filter>src</Filter>
+    </ClInclude>
+    <ClInclude Include="..\src\components\nofrendo\sndhrdw\fds_snd.h">
+      <Filter>src</Filter>
+    </ClInclude>
+    <ClInclude Include="..\src\components\nofrendo\sndhrdw\mmc5_snd.h">
+      <Filter>src</Filter>
+    </ClInclude>
+    <ClInclude Include="..\src\components\nofrendo\sndhrdw\nes_apu.h">
+      <Filter>src</Filter>
+    </ClInclude>
+    <ClInclude Include="..\src\components\nofrendo\sndhrdw\vrcvisnd.h">
+      <Filter>src</Filter>
+    </ClInclude>
+    <ClInclude Include="..\src\event.h">
+      <Filter>src</Filter>
+    </ClInclude>
+    <ClInclude Include="..\src\gui.h">
+      <Filter>src</Filter>
+    </ClInclude>
+    <ClInclude Include="..\src\gui_elem.h">
+      <Filter>src</Filter>
+    </ClInclude>
+    <ClInclude Include="..\src\intro.h">
+      <Filter>src</Filter>
+    </ClInclude>
+    <ClInclude Include="..\src\log.h">
+      <Filter>src</Filter>
+    </ClInclude>
+    <ClInclude Include="..\src\memguard.h">
+      <Filter>src</Filter>
+    </ClInclude>
+    <ClInclude Include="..\src\nofconfig.h">
+      <Filter>src</Filter>
+    </ClInclude>
+    <ClInclude Include="..\src\nofrendo-esp32\lcd.h">
+      <Filter>src</Filter>
+    </ClInclude>
+    <ClInclude Include="..\src\nofrendo-esp32\psxcontroller.h">
+      <Filter>src</Filter>
+    </ClInclude>
+    <ClInclude Include="..\src\nofrendo.h">
+      <Filter>src</Filter>
+    </ClInclude>
+    <ClInclude Include="..\src\noftypes.h">
+      <Filter>src</Filter>
+    </ClInclude>
+    <ClInclude Include="..\src\osd.h">
+      <Filter>src</Filter>
+    </ClInclude>
+    <ClInclude Include="..\src\pcx.h">
+      <Filter>src</Filter>
+    </ClInclude>
+    <ClInclude Include="..\src\version.h">
+      <Filter>src</Filter>
+    </ClInclude>
+    <ClInclude Include="..\src\vid_drv.h">
+      <Filter>src</Filter>
+    </ClInclude>
+    <ClInclude Include="freertos\task.h">
+      <Filter>FreeRTOS\include</Filter>
+    </ClInclude>
+    <ClInclude Include="freertos\timers.h">
+      <Filter>FreeRTOS\include</Filter>
+    </ClInclude>
+    <ClInclude Include="freertos\FreeRTOS.h">
+      <Filter>FreeRTOS\include</Filter>
+    </ClInclude>
+    <ClInclude Include="freertos\queue.h">
+      <Filter>FreeRTOS\include</Filter>
+    </ClInclude>
+    <ClInclude Include="..\src\console.h">
+      <Filter>src</Filter>
+    </ClInclude>
+    <ClInclude Include="..\..\Artino_Common\src\Artino_Console.h">
+      <Filter>Common</Filter>
+    </ClInclude>
+    <ClInclude Include="..\..\Artino_Common\src\Artino_Font.h">
+      <Filter>Common</Filter>
+    </ClInclude>
+    <ClInclude Include="..\..\Artino_Common\src\hzk\hzk16.h">
+      <Filter>Common</Filter>
+    </ClInclude>
+    <ClInclude Include="..\..\Artino_Common\src\hzk\ucs2_gbk_table.h">
+      <Filter>Common</Filter>
+    </ClInclude>
+    <ClInclude Include="..\..\Artino_Common\src\hzk\ASCII16.h">
+      <Filter>Common</Filter>
+    </ClInclude>
+    <ClInclude Include="..\..\Artino_Common\src\Artino_Menu.h">
+      <Filter>Common</Filter>
+    </ClInclude>
+  </ItemGroup>
+  <ItemGroup>
+    <ClCompile Include="NESpEmulator.cpp">
+      <Filter>源文件</Filter>
+    </ClCompile>
+    <ClCompile Include="..\src\bitmap.cpp">
+      <Filter>src</Filter>
+    </ClCompile>
+    <ClCompile Include="..\src\components\nofrendo\cpu\dis6502.cpp">
+      <Filter>src</Filter>
+    </ClCompile>
+    <ClCompile Include="..\src\components\nofrendo\cpu\nes6502.cpp">
+      <Filter>src</Filter>
+    </ClCompile>
+    <ClCompile Include="..\src\components\nofrendo\libsnss\libsnss.cpp">
+      <Filter>src</Filter>
+    </ClCompile>
+    <ClCompile Include="..\src\components\nofrendo\mappers\mapvrc.cpp">
+      <Filter>src</Filter>
+    </ClCompile>
+    <ClCompile Include="..\src\components\nofrendo\nes\mmclist.cpp">
+      <Filter>src</Filter>
+    </ClCompile>
+    <ClCompile Include="..\src\components\nofrendo\nes\nes.cpp">
+      <Filter>src</Filter>
+    </ClCompile>
+    <ClCompile Include="..\src\components\nofrendo\nes\nesinput.cpp">
+      <Filter>src</Filter>
+    </ClCompile>
+    <ClCompile Include="..\src\components\nofrendo\nes\nesstate.cpp">
+      <Filter>src</Filter>
+    </ClCompile>
+    <ClCompile Include="..\src\components\nofrendo\nes\nes_mmc.cpp">
+      <Filter>src</Filter>
+    </ClCompile>
+    <ClCompile Include="..\src\components\nofrendo\nes\nes_pal.cpp">
+      <Filter>src</Filter>
+    </ClCompile>
+    <ClCompile Include="..\src\components\nofrendo\nes\nes_ppu.cpp">
+      <Filter>src</Filter>
+    </ClCompile>
+    <ClCompile Include="..\src\components\nofrendo\nes\nes_rom.cpp">
+      <Filter>src</Filter>
+    </ClCompile>
+    <ClCompile Include="..\src\components\nofrendo\sndhrdw\fds_snd.cpp">
+      <Filter>src</Filter>
+    </ClCompile>
+    <ClCompile Include="..\src\components\nofrendo\sndhrdw\mmc5_snd.cpp">
+      <Filter>src</Filter>
+    </ClCompile>
+    <ClCompile Include="..\src\components\nofrendo\sndhrdw\nes_apu.cpp">
+      <Filter>src</Filter>
+    </ClCompile>
+    <ClCompile Include="..\src\components\nofrendo\sndhrdw\vrcvisnd.cpp">
+      <Filter>src</Filter>
+    </ClCompile>
+    <ClCompile Include="..\src\config.cpp">
+      <Filter>src</Filter>
+    </ClCompile>
+    <ClCompile Include="..\src\event.cpp">
+      <Filter>src</Filter>
+    </ClCompile>
+    <ClCompile Include="..\src\gui.cpp">
+      <Filter>src</Filter>
+    </ClCompile>
+    <ClCompile Include="..\src\gui_elem.cpp">
+      <Filter>src</Filter>
+    </ClCompile>
+    <ClCompile Include="..\src\intro.cpp">
+      <Filter>src</Filter>
+    </ClCompile>
+    <ClCompile Include="..\src\log.cpp">
+      <Filter>src</Filter>
+    </ClCompile>
+    <ClCompile Include="..\src\memguard.cpp">
+      <Filter>src</Filter>
+    </ClCompile>
+    <ClCompile Include="..\src\nofrendo-esp32\osd.cpp">
+      <Filter>src</Filter>
+    </ClCompile>
+    <ClCompile Include="..\src\nofrendo-esp32\psxcontroller.c">
+      <Filter>src</Filter>
+    </ClCompile>
+    <ClCompile Include="..\src\nofrendo-esp32\spi_lcd.c">
+      <Filter>src</Filter>
+    </ClCompile>
+    <ClCompile Include="..\src\nofrendo-esp32\video_audio.cpp">
+      <Filter>src</Filter>
+    </ClCompile>
+    <ClCompile Include="..\src\nofrendo.cpp">
+      <Filter>src</Filter>
+    </ClCompile>
+    <ClCompile Include="..\src\pcx.cpp">
+      <Filter>src</Filter>
+    </ClCompile>
+    <ClCompile Include="..\src\vid_drv.cpp">
+      <Filter>src</Filter>
+    </ClCompile>
+    <ClCompile Include="emulator.cpp">
+      <Filter>源文件</Filter>
+    </ClCompile>
+    <ClCompile Include="freertos\FreeRTOS.cpp">
+      <Filter>FreeRTOS</Filter>
+    </ClCompile>
+    <ClCompile Include="..\src\components\nofrendo\mappers\map000.cpp">
+      <Filter>src\mappers</Filter>
+    </ClCompile>
+    <ClCompile Include="..\src\components\nofrendo\mappers\map001.cpp">
+      <Filter>src\mappers</Filter>
+    </ClCompile>
+    <ClCompile Include="..\src\components\nofrendo\mappers\map002.cpp">
+      <Filter>src\mappers</Filter>
+    </ClCompile>
+    <ClCompile Include="..\src\components\nofrendo\mappers\map003.cpp">
+      <Filter>src\mappers</Filter>
+    </ClCompile>
+    <ClCompile Include="..\src\components\nofrendo\mappers\map004.cpp">
+      <Filter>src\mappers</Filter>
+    </ClCompile>
+    <ClCompile Include="..\src\components\nofrendo\mappers\map005.cpp">
+      <Filter>src\mappers</Filter>
+    </ClCompile>
+    <ClCompile Include="..\src\components\nofrendo\mappers\map007.cpp">
+      <Filter>src\mappers</Filter>
+    </ClCompile>
+    <ClCompile Include="..\src\components\nofrendo\mappers\map008.cpp">
+      <Filter>src\mappers</Filter>
+    </ClCompile>
+    <ClCompile Include="..\src\components\nofrendo\mappers\map009.cpp">
+      <Filter>src\mappers</Filter>
+    </ClCompile>
+    <ClCompile Include="..\src\components\nofrendo\mappers\map011.cpp">
+      <Filter>src\mappers</Filter>
+    </ClCompile>
+    <ClCompile Include="..\src\components\nofrendo\mappers\map015.cpp">
+      <Filter>src\mappers</Filter>
+    </ClCompile>
+    <ClCompile Include="..\src\components\nofrendo\mappers\map016.cpp">
+      <Filter>src\mappers</Filter>
+    </ClCompile>
+    <ClCompile Include="..\src\components\nofrendo\mappers\map018.cpp">
+      <Filter>src\mappers</Filter>
+    </ClCompile>
+    <ClCompile Include="..\src\components\nofrendo\mappers\map019.cpp">
+      <Filter>src\mappers</Filter>
+    </ClCompile>
+    <ClCompile Include="..\src\components\nofrendo\mappers\map024.cpp">
+      <Filter>src\mappers</Filter>
+    </ClCompile>
+    <ClCompile Include="..\src\components\nofrendo\mappers\map032.cpp">
+      <Filter>src\mappers</Filter>
+    </ClCompile>
+    <ClCompile Include="..\src\components\nofrendo\mappers\map033.cpp">
+      <Filter>src\mappers</Filter>
+    </ClCompile>
+    <ClCompile Include="..\src\components\nofrendo\mappers\map034.cpp">
+      <Filter>src\mappers</Filter>
+    </ClCompile>
+    <ClCompile Include="..\src\components\nofrendo\mappers\map040.cpp">
+      <Filter>src\mappers</Filter>
+    </ClCompile>
+    <ClCompile Include="..\src\components\nofrendo\mappers\map041.cpp">
+      <Filter>src\mappers</Filter>
+    </ClCompile>
+    <ClCompile Include="..\src\components\nofrendo\mappers\map042.cpp">
+      <Filter>src\mappers</Filter>
+    </ClCompile>
+    <ClCompile Include="..\src\components\nofrendo\mappers\map046.cpp">
+      <Filter>src\mappers</Filter>
+    </ClCompile>
+    <ClCompile Include="..\src\components\nofrendo\mappers\map050.cpp">
+      <Filter>src\mappers</Filter>
+    </ClCompile>
+    <ClCompile Include="..\src\components\nofrendo\mappers\map064.cpp">
+      <Filter>src\mappers</Filter>
+    </ClCompile>
+    <ClCompile Include="..\src\components\nofrendo\mappers\map065.cpp">
+      <Filter>src\mappers</Filter>
+    </ClCompile>
+    <ClCompile Include="..\src\components\nofrendo\mappers\map066.cpp">
+      <Filter>src\mappers</Filter>
+    </ClCompile>
+    <ClCompile Include="..\src\components\nofrendo\mappers\map070.cpp">
+      <Filter>src\mappers</Filter>
+    </ClCompile>
+    <ClCompile Include="..\src\components\nofrendo\mappers\map073.cpp">
+      <Filter>src\mappers</Filter>
+    </ClCompile>
+    <ClCompile Include="..\src\components\nofrendo\mappers\map075.cpp">
+      <Filter>src\mappers</Filter>
+    </ClCompile>
+    <ClCompile Include="..\src\components\nofrendo\mappers\map078.cpp">
+      <Filter>src\mappers</Filter>
+    </ClCompile>
+    <ClCompile Include="..\src\components\nofrendo\mappers\map079.cpp">
+      <Filter>src\mappers</Filter>
+    </ClCompile>
+    <ClCompile Include="..\src\components\nofrendo\mappers\map085.cpp">
+      <Filter>src\mappers</Filter>
+    </ClCompile>
+    <ClCompile Include="..\src\components\nofrendo\mappers\map087.cpp">
+      <Filter>src\mappers</Filter>
+    </ClCompile>
+    <ClCompile Include="..\src\components\nofrendo\mappers\map093.cpp">
+      <Filter>src\mappers</Filter>
+    </ClCompile>
+    <ClCompile Include="..\src\components\nofrendo\mappers\map094.cpp">
+      <Filter>src\mappers</Filter>
+    </ClCompile>
+    <ClCompile Include="..\src\components\nofrendo\mappers\map099.cpp">
+      <Filter>src\mappers</Filter>
+    </ClCompile>
+    <ClCompile Include="..\src\components\nofrendo\mappers\map160.cpp">
+      <Filter>src\mappers</Filter>
+    </ClCompile>
+    <ClCompile Include="..\src\components\nofrendo\mappers\map229.cpp">
+      <Filter>src\mappers</Filter>
+    </ClCompile>
+    <ClCompile Include="..\src\components\nofrendo\mappers\map231.cpp">
+      <Filter>src\mappers</Filter>
+    </ClCompile>
+    <ClCompile Include="..\src\console.cpp">
+      <Filter>src</Filter>
+    </ClCompile>
+    <ClCompile Include="..\..\Artino_Common\src\Artino_Console.cpp">
+      <Filter>Common</Filter>
+    </ClCompile>
+    <ClCompile Include="..\..\Artino_Common\src\hzk\ucs2_gbk.cpp">
+      <Filter>Common</Filter>
+    </ClCompile>
+    <ClCompile Include="..\..\Artino_Common\src\hzk\Font.cpp">
+      <Filter>Common</Filter>
+    </ClCompile>
+    <ClCompile Include="..\src\fileloading.cpp">
+      <Filter>src</Filter>
+    </ClCompile>
+  </ItemGroup>
+</Project>

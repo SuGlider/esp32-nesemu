@@ -1,0 +1,25 @@
+﻿
+Microsoft Visual Studio Solution File, Format Version 12.00
+# Visual Studio Version 17
+VisualStudioVersion = 17.3.32929.385
+MinimumVisualStudioVersion = 10.0.40219.1
+Project("{8BC9CEB8-8B4A-11D0-8D11-00A0C91BC942}") = "NESpEmulator", "NESpEmulator.vcxproj", "{A54F8C59-4D31-49C5-A25C-A89F2420D055}"
+EndProject
+Global
+	GlobalSection(SolutionConfigurationPlatforms) = preSolution
+		Debug|x86 = Debug|x86
+		Release|x86 = Release|x86
+	EndGlobalSection
+	GlobalSection(ProjectConfigurationPlatforms) = postSolution
+		{A54F8C59-4D31-49C5-A25C-A89F2420D055}.Debug|x86.ActiveCfg = Debug|Win32
+		{A54F8C59-4D31-49C5-A25C-A89F2420D055}.Debug|x86.Build.0 = Debug|Win32
+		{A54F8C59-4D31-49C5-A25C-A89F2420D055}.Release|x86.ActiveCfg = Release|Win32
+		{A54F8C59-4D31-49C5-A25C-A89F2420D055}.Release|x86.Build.0 = Release|Win32
+	EndGlobalSection
+	GlobalSection(SolutionProperties) = preSolution
+		HideSolutionNode = FALSE
+	EndGlobalSection
+	GlobalSection(ExtensibilityGlobals) = postSolution
+		SolutionGuid = {68149E7D-E557-4E7F-9CEE-0BA277CAA688}
+	EndGlobalSection
+EndGlobal
